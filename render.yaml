@@ -5,19 +5,21 @@ services:
     plan: free
     dockerfilePath: ./Dockerfile
     envVars:
-      - key: REDMINE_DB_MYSQL_HOST
+      - key: REDMINE_DB_POSTGRES
+        value: true
+      - key: REDMINE_DB_POSTGRESQL
         fromDatabase:
           name: redmine-db
           field: host
-      - key: REDMINE_DB_MYSQL_USER
+      - key: REDMINE_DB_USERNAME
         fromDatabase:
           name: redmine-db
           field: user
-      - key: REDMINE_DB_MYSQL_PASSWORD
+      - key: REDMINE_DB_PASSWORD
         fromDatabase:
           name: redmine-db
           field: password
-      - key: REDMINE_DB_MYSQL_DB
+      - key: REDMINE_DB_DATABASE
         fromDatabase:
           name: redmine-db
           field: database
