@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: redmine
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: REDMINE_DB_MYSQL_HOST
+        fromDatabase:
+          name: redmine-db
+          field: host
+      - key: REDMINE_DB_MYSQL_USER
+        fromDatabase:
+          name: redmine-db
+          field: user
+      - key: REDMINE_DB_MYSQL_PASSWORD
+        fromDatabase:
+          name: redmine-db
+          field: password
+      - key: REDMINE_DB_MYSQL_DB
+        fromDatabase:
+          name: redmine-db
+          field: database
+    autoDeploy: true
